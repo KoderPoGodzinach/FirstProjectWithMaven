@@ -44,8 +44,8 @@ public class BookRepository implements DaoBook {
         System.out.println("Autor the new book");
         String autor = scanner.next();
 
-        dbConfiguration.dbExecuteUpdateQuery("INSERT Into `library`.`book` (`idBook`, `title`, `autor`) Values "+"("
-                +id+",'"+title+"',"+"'"+autor+"')");
+        dbConfiguration.dbExecuteUpdateQuery("INSERT Into `library`.`book` (`idBook`, `title`, `autor`) Values " + "("
+                + id + ",'" + title + "'," + "'" + autor + "')");
     }
 
     // Find a book by title
@@ -60,7 +60,7 @@ public class BookRepository implements DaoBook {
     // Find a book by autor
     public void findBookByAutor(String autor) throws Exception {
         resultSet = dbConfiguration.dbExecuteQuery("Select * From `library`.`book` Where title= " + "'" + autor + "'");
-        while (resultSet.next()) { // dopoki istnieje kolejny obiekt wykonuj następujące działania:
+        while (resultSet.next()) {
             System.out.println("idBook: " + (resultSet.getString(1)) + " title" + (resultSet.getString(2)) + " autor" +
                     (resultSet.getString(3)));
         }
