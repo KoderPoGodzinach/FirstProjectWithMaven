@@ -19,11 +19,13 @@ public class PersonRepository implements DaoPerson {
             System.out.println("Name: " + (resultSet.getString(2)) + " surname: " + resultSet.getString(3));
         }
     }
+
     // adding a person to the library
     public void addNewPerson() throws SQLException {
         dbConfiguration.dbExecuteUpdateQuery("INSERT INTO `library`.`person` (`idPerson`, `name`, `surname`)" +
                 " VALUES " + "('3'," + " 'Adam', 'Kowalski')");
     }
+
     // adding a person to the library
     public void addNewPerson2() throws SQLException {
         Scanner scanner = new Scanner(System.in);
@@ -36,8 +38,8 @@ public class PersonRepository implements DaoPerson {
 
         dbConfiguration.dbExecuteUpdateQuery("INSERT INTO `library`.`person` (`idPerson`, `name`, `surname`) Values " + "("
                 + id + ",'" + name + "'," + "'" + surname + "')");
-
     }
+
     // Find a person by Name
     public void findPersonByName(String name) throws Exception {
         resultSet = dbConfiguration.dbExecuteQuery("Select * From `library`.`book` Where title= " + "'" + name + "'");
@@ -46,6 +48,7 @@ public class PersonRepository implements DaoPerson {
                     (resultSet.getString(3))));
         }
     }
+
     // Find Person by Surname
     public void findPersonBySurname(String surname) throws Exception {
         resultSet = dbConfiguration.dbExecuteQuery("Select * From `library`.`book` Where title= " + "'" + surname + "'");
@@ -54,6 +57,35 @@ public class PersonRepository implements DaoPerson {
                     (resultSet.getString(3))));
         }
     }
+
+    // Find Person by Name and Surname
+    public int findPerson(String name, String surname) throws Exception {
+        resultSet = dbConfiguration.dbExecuteQuery("Select * From person Where name= " + "'" + name + "'" + "AND "
+                + "surname= " + "'" + surname + "'");
+        String index = "";
+        while (resultSet.next()) {
+            index = resultSet.getString(1);
+        }
+        try {
+            int id = Integer.parseInt(index);
+            return id;
+        } catch (NumberFormatException e) {
+            System.out.println("This is not a number!");
+        }
+        return 0;
+    }
+    // Find Person by Surname
+    public int findPerson(String surname) throws Exception {
+        resultSet = dbConfiguration.dbExecuteQuery("Select * From `library`.`person` Where surname= " + "'" +
+                surname + "'");
+        String index = "";
+        while (resultSet.next()) {
+            index = resultSet.getString(1);
+        }
+        int id = Integer.parseInt(index);
+        return id;
+    }
+
     // Update information about Person
     public void updatePerson() throws SQLException {
         dbConfiguration.dbExecuteUpdateQuery("UPDATE `library`.`person` SET `idPerson`='6', `name`='Eugeniusz', " +

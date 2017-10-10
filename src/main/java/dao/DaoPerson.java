@@ -13,5 +13,9 @@ public interface DaoPerson {
 
     void findPersonBySurname(String surname) throws Exception;
 
+    int findPerson(String name, String surname) throws Exception;
+
+    int findPerson(String surname) throws Exception;
+
     void updatePerson() throws SQLException;
 }

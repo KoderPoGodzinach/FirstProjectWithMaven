@@ -57,6 +57,18 @@ public class BookRepository implements DaoBook {
         }
     }
 
+
+    public int findBook(String title) throws Exception {
+        resultSet = dbConfiguration.dbExecuteQuery("Select * From `library`.`book` Where title= " + "'" + title + "'");
+        String index = "";
+        while (resultSet.next()) {
+            index = resultSet.getString(1);
+        }
+        int id = Integer.parseInt(index);
+        return id;
+    }
+
+
     // Find a book by autor
     public void findBookByAutor(String autor) throws Exception {
         resultSet = dbConfiguration.dbExecuteQuery("Select * From `library`.`book` Where title= " + "'" + autor + "'");

@@ -15,6 +15,8 @@ public interface DaoBook {
 
     void findBookByTitle(String title) throws Exception;
 
+    int findBook(String title) throws Exception;
+
     void findBookByAutor(String autor) throws Exception;
 
     void updateBook() throws SQLException;
