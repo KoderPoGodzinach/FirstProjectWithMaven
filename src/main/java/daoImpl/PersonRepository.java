@@ -74,6 +74,7 @@ public class PersonRepository implements DaoPerson {
         }
         return 0;
     }
+
     // Find Person by Surname
     public int findPerson(String surname) throws Exception {
         resultSet = dbConfiguration.dbExecuteQuery("Select * From `library`.`person` Where surname= " + "'" +
@@ -90,5 +91,15 @@ public class PersonRepository implements DaoPerson {
     public void updatePerson() throws SQLException {
         dbConfiguration.dbExecuteUpdateQuery("UPDATE `library`.`person` SET `idPerson`='6', `name`='Eugeniusz', " +
                 "`surname`='Kowalski' WHERE `idPerson`='2'");
+    }
+
+    // Delete Person
+    public void deletePerson() throws SQLException {
+        dbConfiguration.dbExecuteUpdateQuery("DELETE FROM `library`.`person` WHERE `idperson`='7'");
+    }
+
+    // Delete Perosn by Id
+    public void deletePersonbyId(int id) throws SQLException {
+        dbConfiguration.dbExecuteUpdateQuery("DELETE FROM `library`.`person` WHERE `idperson`=" + "'" + id + "'");
     }
 }

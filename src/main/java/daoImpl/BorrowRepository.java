@@ -1,8 +1,8 @@
 package daoImpl;
 
 import dao.DaoBorrow;
+import model.Book;
 import model.DbConfiguration;
-import model.Person;
 
 import java.sql.ResultSet;
 
@@ -12,18 +12,23 @@ public class BorrowRepository implements DaoBorrow {
     PersonRepository personRepository = new PersonRepository();
     BookRepository bookRepository = new BookRepository();
 
+   // Book book;
 
-    // tutaj też zmieniłem z Person person na String name itp...
     public void addBorrow(String name, String surname, String bookTitle) throws Exception {
         int idperson = personRepository.findPerson(name, surname);
         int idBook = bookRepository.findBook(bookTitle);
-        int id = 5;
-        dbConfiguration.dbExecuteUpdateQuery("INSERT INTO `library`.`borrow` (`idborrow`, `idbook`, `idperson`) " +
-                "Values " + "(" + "'" + id + "'" + ",'" + idBook + "'," + "'" + idperson + "')");
-        //dbConfiguration.dbExecuteUpdateQuery("INSERT INTO `library`.`borrow` (`idborrow`, `idbook`, `idperson`) " +
-        //     "VALUES " + "('3', '2', '3')");
-    }
+        int id = 11;
 
+//        book.setIdBook(idBook);
+//        if (book.getAvaiable() == false) {
+  //          System.out.println("Przykro mi nie możesz wyporzyczyć tej książki ");
+    //    } else {
+            dbConfiguration.dbExecuteUpdateQuery("INSERT INTO `library`.`borrow` (`idborrow`, `idbook`, `idperson`) " +
+                    "Values " + "(" + "'" + id + "'" + ",'" + idBook + "'," + "'" + idperson + "')");
+      //      book.setIdBook(idBook);
+        //    book.setAvaiable(false);
+        //}
+    }
 
     public void addBorrow(String surname, String bookTitle) throws Exception {
         int idperson = personRepository.findPerson(surname);

@@ -18,4 +18,8 @@ public interface DaoPerson {
     int findPerson(String surname) throws Exception;
 
     void updatePerson() throws SQLException;
+
+    void deletePerson() throws SQLException;
+
+    void deletePersonbyId(int id) throws SQLException;
 }

@@ -4,11 +4,13 @@ public class Book {
     private int idBook;
     private String title;
     private String autor;
+    private Boolean avaiable;
 
-    public Book(int idBook, String title, String autor) {
+    public Book(int idBook, String title, String autor, Boolean avaiable) {
         this.idBook = idBook;
         this.title = title;
         this.autor = autor;
+        this.avaiable = avaiable;
     }
 
     public int getIdBook() {
@@ -33,6 +35,14 @@ public class Book {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+
+    public Boolean getAvaiable() {
+        return avaiable;
+    }
+
+    public void setAvaiable(Boolean avaiable) {
+        this.avaiable = avaiable;
     }
 
     @Override

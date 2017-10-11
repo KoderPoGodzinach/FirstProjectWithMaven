@@ -13,6 +13,7 @@ public class BookRepository implements DaoBook {
     DbConfiguration dbConfiguration = new DbConfiguration();
     ResultSet resultSet;
 
+
     // Displaying information in rows in the table
     public void showAll() throws Exception {
         resultSet = dbConfiguration.dbExecuteQuery("Select * From book");
@@ -57,7 +58,6 @@ public class BookRepository implements DaoBook {
         }
     }
 
-
     public int findBook(String title) throws Exception {
         resultSet = dbConfiguration.dbExecuteQuery("Select * From `library`.`book` Where title= " + "'" + title + "'");
         String index = "";
@@ -82,5 +82,15 @@ public class BookRepository implements DaoBook {
     public void updateBook() throws SQLException {
         dbConfiguration.dbExecuteUpdateQuery("UPDATE `library`.`book` SET `idBook`='6', `title`='Piąty poziom', " +
                 "`autor`='Volant' WHERE `idBook`='2'");
+    }
+
+    // Delete Book
+    public void deleteBook() throws SQLException {
+        dbConfiguration.dbExecuteUpdateQuery("DELETE FROM `library`.`book` WHERE `idbook`='7'");
+    }
+
+    // Delete Book by Id
+    public void deleteBookById(int id) throws SQLException {
+        dbConfiguration.dbExecuteUpdateQuery("DELETE FROM `library`.`book` WHERE `idbook`=" + "'" + id + "'");
     }
 }

@@ -20,4 +20,8 @@ public interface DaoBook {
     void findBookByAutor(String autor) throws Exception;
 
     void updateBook() throws SQLException;
+
+    void deleteBook() throws SQLException;
+
+    void deleteBookById(int id) throws SQLException;
 }
